@@ -31,7 +31,21 @@ go list -m -f '{{.Path}} {{.Dir}}' all | while read -r MOD_PATH MOD_DIR; do
 
   DEST_DIR="$LICENSE_DIR/$MOD_PATH"
   mkdir -p "$DEST_DIR"
-  cp "$LICENSE_FILE" "$DEST_DIR/"
-
-  echo "✓ $MOD_PATH"
+  
+  # Extract the basename of the license file
+  LICENSE_BASENAME="$(basename "$LICENSE_FILE")"
+  DEST_FILE="$DEST_DIR/$LICENSE_BASENAME"
+  
+  # Check if the license file already exists
+  if [[ -f "$DEST_FILE" ]]; then
+    if cmp -s "$LICENSE_FILE" "$DEST_FILE"; then
+      echo "⊙ $MOD_PATH (already up to date)"
+    else
+      cp "$LICENSE_FILE" "$DEST_DIR/"
+      echo "↻ $MOD_PATH (updated license)"
+    fi
+  else
+    cp "$LICENSE_FILE" "$DEST_DIR/"
+    echo "✓ $MOD_PATH"
+  fi
 done
