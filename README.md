@@ -42,7 +42,7 @@ You can integrate this tool into your own Nix flake:
 ```nix
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     go-license-collector.url = "github:LightJack05/go-license-collector";
   };
 
@@ -75,7 +75,7 @@ If you prefer not to use Nix, you can run the script directly.
 
 ```bash
 # Download the script
-curl -O https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
+curl -o go-license-collector.sh https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
 
 # Make it executable
 chmod +x go-license-collector.sh
