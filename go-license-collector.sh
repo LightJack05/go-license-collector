@@ -38,7 +38,12 @@ go list -m -f '{{.Path}} {{.Dir}}' all | while read -r MOD_PATH MOD_DIR; do
   
   # Check if the license file already exists
   if [[ -f "$DEST_FILE" ]]; then
-    echo "⊙ $MOD_PATH (already present)"
+    if cmp -s "$LICENSE_FILE" "$DEST_FILE"; then
+      echo "⊙ $MOD_PATH (already up to date)"
+    else
+      cp "$LICENSE_FILE" "$DEST_DIR/"
+      echo "↻ $MOD_PATH (updated license)"
+    fi
   else
     cp "$LICENSE_FILE" "$DEST_DIR/"
     echo "✓ $MOD_PATH"
