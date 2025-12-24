@@ -75,7 +75,7 @@ If you prefer not to use Nix, you can run the script directly.
 
 ```bash
 # Download the script
-curl -o go-license-collector.sh https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
+curl -f -o go-license-collector.sh https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
 
 # Make it executable
 chmod +x go-license-collector.sh
@@ -93,7 +93,7 @@ To install the script for system-wide use:
 
 ```bash
 # Download the script
-curl -o /usr/local/bin/go-license-collector https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
+curl -f -o /usr/local/bin/go-license-collector https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
 
 # Make it executable
 chmod +x /usr/local/bin/go-license-collector
