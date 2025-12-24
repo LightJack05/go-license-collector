@@ -42,7 +42,7 @@ You can integrate this tool into your own Nix flake:
 ```nix
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     go-license-collector.url = "github:LightJack05/go-license-collector";
   };
 
@@ -88,6 +88,9 @@ chmod +x go-license-collector.sh
 
 To install the script for system-wide use:
 
+> [!NOTE]
+> Installing to `/usr/local/bin` requires root privileges. Always review scripts before installing them system-wide. Alternatively, you can install to `~/bin` (add it to your PATH) for a user-local installation without requiring root access.
+
 ```bash
 # Download the script
 curl -o /usr/local/bin/go-license-collector https://raw.githubusercontent.com/LightJack05/go-license-collector/main/go-license-collector.sh
@@ -115,7 +118,7 @@ The tool provides informative output for each dependency:
 - `✓ module/path` - License successfully collected
 - `↻ module/path (updated license)` - License was updated
 - `⊙ module/path (already up to date)` - License unchanged
-- `⚠️ No license found for module/path` - No license file detected
+- `⚠️  No license found for module/path` - No license file detected
 
 ## Example
 
